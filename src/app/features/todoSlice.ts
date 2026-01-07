@@ -1,7 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 import type { Todo } from "./types";
-import { v4 as uuid } from "uuid";
 
 interface TodosState {
   items: Todo[];
@@ -18,6 +17,7 @@ const todoSlice = createSlice({
     addTodo(state, action: PayloadAction<Todo>) {
       state.items.push(action.payload);
     },
+
     toggleTodo(state, action: PayloadAction<string>) {
       const todo = state.items.find((t) => t.id === action.payload);
       if (todo) todo.completed = !todo.completed;

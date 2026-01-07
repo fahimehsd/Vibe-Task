@@ -23,18 +23,17 @@ export default function TodoTabs(props: TabProps) {
   };
 
   return (
-    <Box sx={{ width: "100%" }}>
-      <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
-        <Tabs
-          value={value}
-          onChange={handleChange}
-          aria-label="basic tabs example"
-        >
-          <Tab label="All" {...a11yProps(0)} />
-          <Tab label="Done" {...a11yProps(1)} />
-          <Tab label="In Progress" {...a11yProps(2)} />
-        </Tabs>
-      </Box>
+    <Box sx={{ borderBottom: 1, borderColor: "divider", width: "100%" }}>
+      <Tabs
+        value={value}
+        onChange={handleChange}
+        aria-label="basic tabs example"
+        centered
+      >
+        <Tab label="All" {...a11yProps(0)} />
+        <Tab label="Done" {...a11yProps(1)} />
+        <Tab label="In Progress" {...a11yProps(2)} />
+      </Tabs>
     </Box>
   );
 }
