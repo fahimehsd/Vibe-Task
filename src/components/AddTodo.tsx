@@ -8,13 +8,18 @@ const AddTodo = () => {
   const [todo, setTodo] = useState({
     title: "",
     description: "",
-    completed: false
+    completed: false,
   });
 
   const dispatch = useAppDispatch();
 
   const handleAdd = () => {
     dispatch(addTodo({ id: uuid(), ...todo }));
+    setTodo({
+      title: "",
+      description: "",
+      completed: false,
+    });
   };
   return (
     <Stack width={"100%"} direction="column" spacing={2} mb={3}>
@@ -29,6 +34,7 @@ const AddTodo = () => {
         label="Description"
         multiline
         minRows={3}
+        value={todo.description}
         onChange={(e) => setTodo({ ...todo, description: e.target.value })}
       />
       <Button variant="contained" onClick={handleAdd}>

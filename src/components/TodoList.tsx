@@ -17,8 +17,9 @@ function TodoList(props: TabProps) {
       id={`tab-${index}`}
       aria-labelledby={`tab-${index}`}
       {...other}
+      style={{ width: "100%" }}
     >
-      {value === index && <Box sx={{ p: 3 }}>{children}</Box>}
+      {value === index && <Box sx={{ py: 3 }}>{children}</Box>}
     </div>
   );
 }

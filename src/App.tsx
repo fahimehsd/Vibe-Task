@@ -15,7 +15,7 @@ const App = () => {
       sx={{
         display: "flex",
         justifyContent: "center",
-        p: 5
+        p: 5,
       }}
     >
       <Box
@@ -23,30 +23,39 @@ const App = () => {
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          width: 350
+          width: 350,
         }}
       >
         <Typography variant="h5" mb={5}>
           Vibe Task - Fahimeh Sadeghi
         </Typography>
+
+        {/* Add New Todo TextField */}
         <AddTodo />
+
         <TodoTabs value={value} setValue={setValue} />
+
+        {/* All Todos */}
         <TodoList value={value} index={0}>
           {todos.map((todo) => (
             <TodoItem
               key={todo.id}
+              id={todo.id}
               title={todo.title}
               description={todo.description}
               completed={todo.completed}
             />
           ))}
         </TodoList>
+
+        {/* Completed Todos */}
         <TodoList value={value} index={1}>
           {todos.map(
             (todo) =>
               todo.completed && (
                 <TodoItem
                   key={todo.id}
+                  id={todo.id}
                   title={todo.title}
                   description={todo.description}
                   completed={todo.completed}
@@ -54,8 +63,21 @@ const App = () => {
               )
           )}
         </TodoList>
+
+        {/* In Progress (uncompleted) Todos */}
         <TodoList value={value} index={2}>
-          In Progress
+          {todos.map(
+            (todo) =>
+              !todo.completed && (
+                <TodoItem
+                  key={todo.id}
+                  id={todo.id}
+                  title={todo.title}
+                  description={todo.description}
+                  completed={todo.completed}
+                />
+              )
+          )}
         </TodoList>
       </Box>
     </Box>

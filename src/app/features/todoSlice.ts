@@ -7,7 +7,7 @@ interface TodosState {
 }
 
 const initialState: TodosState = {
-  items: []
+  items: [],
 };
 
 const todoSlice = createSlice({
@@ -22,10 +22,11 @@ const todoSlice = createSlice({
       const todo = state.items.find((t) => t.id === action.payload);
       if (todo) todo.completed = !todo.completed;
     },
+
     removeTodo(state, action: PayloadAction<string>) {
       state.items = state.items.filter((t) => t.id !== action.payload);
-    }
-  }
+    },
+  },
 });
 
 export const { addTodo, toggleTodo, removeTodo } = todoSlice.actions;
