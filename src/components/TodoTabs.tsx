@@ -6,7 +6,7 @@ import { type SyntheticEvent } from "react";
 function a11yProps(index: number) {
   return {
     id: `tab-${index}`,
-    "aria-controls": `tab-${index}`
+    "aria-controls": `tab-${index}`,
   };
 }
 
@@ -19,6 +19,7 @@ export default function TodoTabs(props: TabProps) {
   const { value, setValue } = props;
 
   const handleChange = (event: SyntheticEvent, newValue: number) => {
+    event.preventDefault();
     setValue(newValue);
   };
 
